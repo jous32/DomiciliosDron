@@ -2,20 +2,16 @@ package co.s4n.corrientazos.domain;
 
 import java.util.List;
 
-import co.s4n.corrientazos.domain.enums.DirectionEnum;
-
 public class Dron {
 
 	private String name;
 	private Position position;
-	private DirectionEnum directionEnum;
 	private List<Route> listRoutes;
 	
 	
-	public Dron(String name, Position position, DirectionEnum directionEnum, List<Route> listRoutes) {
+	public Dron(String name, Position position,  List<Route> listRoutes) {
 		this.name = name;
 		this.position = position;
-		this.directionEnum = directionEnum;
 		this.listRoutes = listRoutes;
 	}
 
@@ -27,14 +23,12 @@ public class Dron {
 		return position;
 	}
 	
-	public DirectionEnum getDirectionEnum() {
-		return directionEnum;
-	}
-	
 	public List<Route> getListRoutes() {
 		return listRoutes;
 	}
 	
-	
+	public void updatePosition(Position position) {
+		this.position = position;
+	}
 	
 }
