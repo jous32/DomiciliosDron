@@ -39,14 +39,7 @@ public class DataRepository implements IDataRepository {
 		try {
 			List<String> allLines = Files.readAllLines(Paths.get(path));
 			for (String line : allLines) {
-				System.out.println(line);
-				List<StepEnum> listStepEnum = new ArrayList<StepEnum>();
-				List<String> steps = Arrays.asList(line.split(""));
-				for (String step : steps) {
-					StepEnum stepEnum = StepEnum.findByValues(step);
-					listStepEnum.add(stepEnum);
-				}
-				listRoutes.add(new Route(listStepEnum));
+				listRoutes.add(convertlineToRoute(line));
 			}
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -65,7 +58,17 @@ public class DataRepository implements IDataRepository {
 		}
 	}
 	
-	private String convertListPositionsToString(List<Position> listPositions) {
+	public Route convertlineToRoute(String line) {
+		List<StepEnum> listStepEnum = new ArrayList<StepEnum>();
+		List<String> steps = Arrays.asList(line.split(""));
+		for (String step : steps) {
+			StepEnum stepEnum = StepEnum.findByValues(step);
+			listStepEnum.add(stepEnum);
+		}
+		return new Route(listStepEnum);
+	}
+	
+	public String convertListPositionsToString(List<Position> listPositions) {
 		StringBuilder stringBuilder = new StringBuilder(); 
 		for (Position position : listPositions) {
 			stringBuilder.append(position.toString());

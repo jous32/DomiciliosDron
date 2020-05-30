@@ -24,7 +24,6 @@ public class DomiciliosController {
 		}
 	}
 	
-	
 	private List<Dron> setupAllDrons() {
 		List<Dron> listDrons = new ArrayList<Dron>();
 		List<String> listFiles =dataRepository.listFilesForFolder();
@@ -37,7 +36,7 @@ public class DomiciliosController {
 		return listDrons;
 	}
 	
-	private List<Position> deliver(Dron dron) {
+	public List<Position> deliver(Dron dron) {
 		List<Route> listRoute = dron.getListRoutes();
 		List<Position> listFinalPositions = new ArrayList<Position>();
 		for (Route route : listRoute) {
