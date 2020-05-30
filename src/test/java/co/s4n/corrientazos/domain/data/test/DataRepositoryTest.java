@@ -15,7 +15,6 @@ public class DataRepositoryTest {
 	
 	@Test
 	public void readRoutesTest() {
-		System.out.println("Test1");
 		assertEquals(3, dataRepository.readRoutes(RESOURCES_TEST_PATH+"in01.txt").size());
 	}
 }
