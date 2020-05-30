@@ -1,9 +1,12 @@
 package co.s4n.corrientazos;
 
+import co.s4n.corrientazos.controller.DomiciliosController;
+
 public class DomiciliosApp {
 
 	public static void main(String[] args) {
-		System.out.println("Works");
+		DomiciliosController domiciliosController = new DomiciliosController();
+		domiciliosController.startDronDeliver();
 	}
 
 }

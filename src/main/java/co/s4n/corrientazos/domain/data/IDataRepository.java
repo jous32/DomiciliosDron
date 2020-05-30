@@ -6,7 +6,9 @@ import co.s4n.corrientazos.domain.Route;
 
 public interface IDataRepository {
 	
-	List<Route> readRoutes();
+	List<Route> readRoutes(String path);
 	
 	void createReport();
+
+	List<String> listFilesForFolder();
 }
