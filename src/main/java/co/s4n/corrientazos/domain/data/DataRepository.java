@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import co.s4n.corrientazos.domain.Position;
 import co.s4n.corrientazos.domain.Route;
 import co.s4n.corrientazos.domain.enums.StepEnum;
 
@@ -26,7 +27,6 @@ public class DataRepository implements IDataRepository {
 					fileNames.add(pathFile.getCanonicalPath());
 				}
 			} catch (IOException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}
@@ -43,7 +43,7 @@ public class DataRepository implements IDataRepository {
 				List<StepEnum> listStepEnum = new ArrayList<StepEnum>();
 				List<String> steps = Arrays.asList(line.split(""));
 				for (String step : steps) {
-					StepEnum stepEnum = StepEnum.findByName(step);
+					StepEnum stepEnum = StepEnum.findByValues(step);
 					listStepEnum.add(stepEnum);
 				}
 				listRoutes.add(new Route(listStepEnum));
@@ -55,8 +55,23 @@ public class DataRepository implements IDataRepository {
 	}
 
 	@Override
-	public void createReport() {
-
+	public void createReport(String filename, List<Position> listPositions) {
+		String content = convertListPositionsToString(listPositions);
+		String path = "/tmp/"+ filename;
+		try {
+			Files.write( Paths.get(path), content.getBytes());
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	private String convertListPositionsToString(List<Position> listPositions) {
+		StringBuilder stringBuilder = new StringBuilder(); 
+		for (Position position : listPositions) {
+			stringBuilder.append(position.toString());
+			stringBuilder.append("\n");
+		}
+		return stringBuilder.toString();
 	}
 
 }
