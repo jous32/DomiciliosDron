@@ -6,12 +6,14 @@ import co.s4n.corrientazos.domain.enums.*;
 public class Route {
 	List<StepEnum> route;
 
-	public List<StepEnum> getRoute() {
-		return route;
+	
+	public Route(List<StepEnum> route) {
+		this.route = route;
 	}
 
-	public void setRoute(List<StepEnum> route) {
-		this.route = route;
+
+	public List<StepEnum> getRoute() {
+		return route;
 	}
 
 }

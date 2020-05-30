@@ -16,5 +16,14 @@ public enum StepEnum {
 	public void setName(String name) {
 		this.name = name;
 	}
+	
+	public static StepEnum findByName(String abbr){
+	    for(StepEnum v : values()){
+	        if( v.name().equals(abbr)){
+	            return v;
+	        }
+	    }
+	    return null;
+	}
 
 }
