@@ -3,23 +3,23 @@ package co.s4n.corrientazos.domain.enums;
 public enum StepEnum {
 	AHEAD("A"), LEFT("I"), RIGHT("D");
 
-	private String name;
+	private String values;
 
-	private StepEnum(String name) {
-		this.name = name;
+	private StepEnum(String values) {
+		this.values = values;
 	}
 
-	public String getName() {
-		return name;
+	public String getValues() {
+		return values;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public void setValues(String values) {
+		this.values = values;
 	}
 	
-	public static StepEnum findByName(String abbr){
+	public static StepEnum findByValues(String abbr){
 	    for(StepEnum v : values()){
-	        if( v.name().equals(abbr)){
+	        if( v.getValues().equals(abbr)){
 	            return v;
 	        }
 	    }
